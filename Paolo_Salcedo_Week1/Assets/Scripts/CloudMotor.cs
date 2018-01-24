@@ -5,9 +5,11 @@ using UnityEngine;
 public class CloudMotor : MonoBehaviour {
 
 	public float speed;
+	public int myCloudMaker = 0;
+	private float startSpeed;
 	// Use this for initialization
 	void Start () {
-
+		startSpeed = speed;
 	}
 	
 	// Update is called once per frame
@@ -22,4 +24,14 @@ public class CloudMotor : MonoBehaviour {
 	public void MoveCloud(){
 		transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
 	}
+
+	public void CarStop(){
+		speed = 0;
+	}
+
+	public void CarGo(){
+		speed = startSpeed;
+	}
+
+
 }

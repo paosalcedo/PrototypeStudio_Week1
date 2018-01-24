@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CloudMakerManager : MonoBehaviour {
 
+	public int myNum = 0;
 	float multiplier = 0;
 	float timer;
 	float timerMax;
@@ -28,6 +29,7 @@ public class CloudMakerManager : MonoBehaviour {
 		// cloud.transform.localScale = new Vector3(Random.Range (3,10), Random.Range(3,10), Random.Range(3,10));
 		// cloud.transform.eulerAngles = new Vector3(0, Random.Range(0,359), 0);
 		cloud.GetComponent<CloudMotor>().speed = -cloudSpeed;
+		cloud.GetComponent<CloudMotor>().myCloudMaker = myNum;
 	}
 
 }

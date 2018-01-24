@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ba2a36ac2b6024a83bb08ddbcb0141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerNum: 0
   cloudSpeed: 5
 --- !u!1 &97672054
 GameObject:
@@ -168,6 +169,7 @@ GameObject:
   - component: {fileID: 97672055}
   - component: {fileID: 97672060}
   - component: {fileID: 97672061}
+  - component: {fileID: 97672062}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -291,6 +293,17 @@ MonoBehaviour:
   xMultiplier: 2
   yMultiplier: 0
   zMultiplier: 2
+--- !u!114 &97672062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 97672054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5f7ad8b2b476d40b2d9252fac96400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &105398228 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5d2e4237b4429b34fae4c9eb3cd9efd5, type: 2}
@@ -2174,6 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ba2a36ac2b6024a83bb08ddbcb0141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerNum: 1
   cloudSpeed: -5
 --- !u!4 &1989475801
 Transform:
