@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
  public class FPSController : MonoBehaviour {
 
-	float timeScale = 0.251f;
-	public float perlinJitter;
-	public float xMultiplier;
-	public float yMultiplier;
-	public float zMultiplier;
+	private PerlinJitter myPJ;
 	public float speed = 10.0f;
 	public float airControl = 0.1f;
 	public float gravity = 10.0f;
@@ -35,6 +31,7 @@ using UnityEngine;
 //
 	void Start () {
 //		soundPlayed = false;
+		myPJ = GetComponent<PerlinJitter>();
 		Cursor.lockState = CursorLockMode.Locked;
 		rb = GetComponent<Rigidbody> ();
 
@@ -50,8 +47,7 @@ using UnityEngine;
 	
 	// Update is called once per frame
 	void Update(){
-		perlinJitter = Mathf.PerlinNoise(Time.time * timeScale,0);
-	}
+ 	}
 	void FixedUpdate()
 	{
 		MovePlayer ();
@@ -65,11 +61,13 @@ using UnityEngine;
 	}
 
 	void MovePlayer(){
-
+		
 		Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		// if(targetVelocity.x == 0 && targetVelocity.y == 0){
-			targetVelocity = transform.TransformDirection(targetVelocity);
-			targetVelocity *= speed;
+		Vector3 jitterVec3 = new Vector3 (myPJ.perlinJitter * myPJ.xMultiplier, 0, myPJ.perlinJitter * myPJ.zMultiplier);
+	
+		targetVelocity = transform.TransformDirection(targetVelocity + jitterVec3);
+		targetVelocity *= speed;
 		// }
 
 		// Apply a force that attempts to reach our target velocity

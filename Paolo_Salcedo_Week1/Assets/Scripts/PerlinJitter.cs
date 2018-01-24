@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PerlinJitter : MonoBehaviour {
+	
 	public float perlinJitter;
 	public float xMultiplier;
 	public float yMultiplier;
@@ -19,7 +20,7 @@ public class PerlinJitter : MonoBehaviour {
 	void Update () {
 		perlinJitter = Mathf.PerlinNoise(Time.time * timeScale,0);
 		if(GetComponent<Camera>() == null){
-			PositionNoise();
+			// PositionNoise();
 		} else {
 			RotationNoise();
 		}
@@ -27,6 +28,7 @@ public class PerlinJitter : MonoBehaviour {
 
 	public void PositionNoise(){
 		transform.localPosition = new Vector3 (perlinJitter * xMultiplier, transform.localPosition.y, transform.localPosition.z);
+		// transform.Translate(transform.right * perlinJitter * xMultiplier, Space.Self);
 	}
 
 	public void RotationNoise(){
