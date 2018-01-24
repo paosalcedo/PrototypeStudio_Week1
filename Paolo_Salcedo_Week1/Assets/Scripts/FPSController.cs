@@ -13,6 +13,7 @@ using UnityEngine;
 //	public bool canJump = true;
 	public float jumpHeight = 2.0f;
 	private bool grounded = false;
+
 //	float initHeight;
 
 
@@ -102,6 +103,9 @@ using UnityEngine;
 
 	}
 
+	// void OnCollisionEnter(Collision coll){
+	// 	transform.Translate(Vector3.up * 0.1f);
+	// }
 	void OnCollisionStay (Collision coll) {
 		if (coll.collider.tag == "Ground") {
 			grounded = true;
