@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Passersby : MonoBehaviour {
+public class Passersby : CloudMotor {
 
-	float walkSpeed = 0f;
-	float headRotateSpeed = 100f;
+ 	float headRotateSpeed = 100f;
 	Transform head;
 	MyPlayer player;
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		base.Start();
 		player = FindObjectOfType<MyPlayer>();
 		head = transform.GetChild(0);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		// head.Rotate(transform.up * headRotateSpeed * Time.deltaTime);
-		if(Vector3.Distance(player.transform.position, transform.position) <= 5f){
-			head.LookAt(player.transform);
-		}
-		
-		transform.Translate(transform.forward * walkSpeed * Time.deltaTime, Space.World);
-	}
+	public override void Update ()
+    {
+		base.Update();
+		HeadRotate();
+     }
+
+    private void HeadRotate()
+    {
+        if (Vector3.Distance(player.transform.position, transform.position) <= 5f)
+        {
+            head.LookAt(player.transform);
+        }
+    }
 }

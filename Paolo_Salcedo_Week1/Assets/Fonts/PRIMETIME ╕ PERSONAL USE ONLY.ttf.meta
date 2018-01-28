@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f8f9f3e25d0fa2747b97cb19a6dac56f
+timeCreated: 1517166340
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: PRIMETIME
+  fontNames:
+  - PRIMETIME
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

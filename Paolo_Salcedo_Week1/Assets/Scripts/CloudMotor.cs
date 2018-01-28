@@ -8,24 +8,20 @@ public class CloudMotor : MonoBehaviour {
 	public int myCloudMaker = 0;
 	private float startSpeed;
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
 		startSpeed = speed;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 		MoveCloud();
-
-		//kill cloud here
-		if(transform.position.x <= -300f)
-			Destroy(gameObject);
 	}
 
-	public void MoveCloud(){
+	public virtual void MoveCloud(){
 		transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
 	}
 
-	public void CarStop(){
+	public virtual void CarStop(){
 		speed = 0;
 	}
 
@@ -33,12 +29,12 @@ public class CloudMotor : MonoBehaviour {
 		speed = startSpeed;
 	}
 
-	public IEnumerator KillMe(float delay){
+	public virtual IEnumerator KillMe(float delay){
 		yield return new WaitForSeconds(delay);
 		Destroy(gameObject);	
 	}
 
-	void OnTriggerEnter(Collider hit){
+	public virtual void OnTriggerEnter(Collider hit){
 		if(hit.GetComponent<Killzone>() != null){
 			Destroy(gameObject, 3f);
  		}
