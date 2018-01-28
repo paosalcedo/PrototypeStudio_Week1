@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: 4ab1ce4fc546ebd46b61250328738581
+timeCreated: 1517120922
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: group_1063886806
+    100002: mesh_1177506949
+    100004: mesh_1256653175
+    100006: mesh_1295137338
+    100008: mesh_1500822202
+    100010: mesh_1563856828
+    100012: mesh_173056334
+    100014: mesh_186253919
+    100016: mesh_1904629142
+    100018: mesh_1971511014
+    100020: mesh_1998245686
+    100022: mesh_2044016256
+    100024: mesh_2080171453
+    100026: mesh_280016410
+    100028: mesh_44519153
+    100030: mesh_448624234
+    100032: mesh_506730090
+    100034: mesh_668867203
+    100036: mesh_680130807
+    100038: mesh_682408419
+    100040: mixamorig:Head
+    100042: mixamorig:HeadTop_End
+    100044: mixamorig:Hips
+    100046: mixamorig:LeftArm
+    100048: mixamorig:LeftFoot
+    100050: mixamorig:LeftForeArm
+    100052: mixamorig:LeftHand
+    100054: mixamorig:LeftHandIndex1
+    100056: mixamorig:LeftHandIndex2
+    100058: mixamorig:LeftHandIndex3
+    100060: mixamorig:LeftHandIndex4
+    100062: mixamorig:LeftLeg
+    100064: mixamorig:LeftShoulder
+    100066: mixamorig:LeftToe_End
+    100068: mixamorig:LeftToeBase
+    100070: mixamorig:LeftUpLeg
+    100072: mixamorig:Neck
+    100074: mixamorig:RightArm
+    100076: mixamorig:RightFoot
+    100078: mixamorig:RightForeArm
+    100080: mixamorig:RightHand
+    100082: mixamorig:RightHandIndex1
+    100084: mixamorig:RightHandIndex2
+    100086: mixamorig:RightHandIndex3
+    100088: mixamorig:RightHandIndex4
+    100090: mixamorig:RightLeg
+    100092: mixamorig:RightShoulder
+    100094: mixamorig:RightToe_End
+    100096: mixamorig:RightToeBase
+    100098: mixamorig:RightUpLeg
+    100100: mixamorig:Spine
+    100102: mixamorig:Spine1
+    100104: mixamorig:Spine2
+    100106: //RootNode
+    400000: group_1063886806
+    400002: mesh_1177506949
+    400004: mesh_1256653175
+    400006: mesh_1295137338
+    400008: mesh_1500822202
+    400010: mesh_1563856828
+    400012: mesh_173056334
+    400014: mesh_186253919
+    400016: mesh_1904629142
+    400018: mesh_1971511014
+    400020: mesh_1998245686
+    400022: mesh_2044016256
+    400024: mesh_2080171453
+    400026: mesh_280016410
+    400028: mesh_44519153
+    400030: mesh_448624234
+    400032: mesh_506730090
+    400034: mesh_668867203
+    400036: mesh_680130807
+    400038: mesh_682408419
+    400040: mixamorig:Head
+    400042: mixamorig:HeadTop_End
+    400044: mixamorig:Hips
+    400046: mixamorig:LeftArm
+    400048: mixamorig:LeftFoot
+    400050: mixamorig:LeftForeArm
+    400052: mixamorig:LeftHand
+    400054: mixamorig:LeftHandIndex1
+    400056: mixamorig:LeftHandIndex2
+    400058: mixamorig:LeftHandIndex3
+    400060: mixamorig:LeftHandIndex4
+    400062: mixamorig:LeftLeg
+    400064: mixamorig:LeftShoulder
+    400066: mixamorig:LeftToe_End
+    400068: mixamorig:LeftToeBase
+    400070: mixamorig:LeftUpLeg
+    400072: mixamorig:Neck
+    400074: mixamorig:RightArm
+    400076: mixamorig:RightFoot
+    400078: mixamorig:RightForeArm
+    400080: mixamorig:RightHand
+    400082: mixamorig:RightHandIndex1
+    400084: mixamorig:RightHandIndex2
+    400086: mixamorig:RightHandIndex3
+    400088: mixamorig:RightHandIndex4
+    400090: mixamorig:RightLeg
+    400092: mixamorig:RightShoulder
+    400094: mixamorig:RightToe_End
+    400096: mixamorig:RightToeBase
+    400098: mixamorig:RightUpLeg
+    400100: mixamorig:Spine
+    400102: mixamorig:Spine1
+    400104: mixamorig:Spine2
+    400106: //RootNode
+    2100000: material_21___20947
+    4300000: mesh_1971511014
+    4300002: mesh_1904629142
+    4300004: mesh_682408419
+    4300006: mesh_1998245686
+    4300008: mesh_173056334
+    4300010: mesh_280016410
+    4300012: mesh_2080171453
+    4300014: mesh_186253919
+    4300016: mesh_668867203
+    4300018: mesh_448624234
+    4300020: mesh_1177506949
+    4300022: mesh_680130807
+    4300024: mesh_506730090
+    4300026: mesh_44519153
+    4300028: mesh_1563856828
+    4300030: mesh_1256653175
+    4300032: mesh_2044016256
+    4300034: mesh_1500822202
+    4300036: mesh_1295137338
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: mesh_1177506949
+    13700002: mesh_1256653175
+    13700004: mesh_1295137338
+    13700006: mesh_1500822202
+    13700008: mesh_1563856828
+    13700010: mesh_173056334
+    13700012: mesh_186253919
+    13700014: mesh_1904629142
+    13700016: mesh_1971511014
+    13700018: mesh_1998245686
+    13700020: mesh_2044016256
+    13700022: mesh_2080171453
+    13700024: mesh_280016410
+    13700026: mesh_44519153
+    13700028: mesh_448624234
+    13700030: mesh_506730090
+    13700032: mesh_668867203
+    13700034: mesh_680130807
+    13700036: mesh_682408419
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

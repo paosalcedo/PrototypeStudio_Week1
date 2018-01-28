@@ -5,6 +5,8 @@ using UnityEngine;
 public class CloudMakerManager : MonoBehaviour {
 
 	public int myNum = 0;
+	public int carsSpawned = 0;
+	private bool timeMoves = true;
 	float multiplier = 0;
 	float timer;
 	float timerMax;
@@ -17,7 +19,9 @@ public class CloudMakerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer -= Time.deltaTime;
+		if(timeMoves){
+			timer -= Time.deltaTime;
+		}
 		if(timer <= 0){
 			SpawnRandom();
 			timer = Random.Range(1,3);
@@ -30,6 +34,14 @@ public class CloudMakerManager : MonoBehaviour {
 		// cloud.transform.eulerAngles = new Vector3(0, Random.Range(0,359), 0);
 		cloud.GetComponent<CloudMotor>().speed = -cloudSpeed;
 		cloud.GetComponent<CloudMotor>().myCloudMaker = myNum;
+	}
+
+	public void FreezeTime(){
+		timeMoves = false;
+	}
+
+	public void UnfreezeTime(){
+		timeMoves = true;
 	}
 
 }

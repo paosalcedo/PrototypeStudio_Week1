@@ -33,5 +33,15 @@ public class CloudMotor : MonoBehaviour {
 		speed = startSpeed;
 	}
 
+	public IEnumerator KillMe(float delay){
+		yield return new WaitForSeconds(delay);
+		Destroy(gameObject);	
+	}
+
+	void OnTriggerEnter(Collider hit){
+		if(hit.GetComponent<Killzone>() != null){
+			Destroy(gameObject, 3f);
+ 		}
+	}
 
 }
