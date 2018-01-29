@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
 	public GameObject sceneRoot;
 	public Camera currentCamera;
+	private MouseLook mouseLook;
 	void Awake()
 	{
 		InitializeServices();
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		Time.timeScale = 0;
+		mouseLook = FindObjectOfType<MouseLook>();
+		mouseLook.enabled = false;
 		 		// Services.EventManager.Register<Reset>(Reset);
 		// Services.SceneStackManager.PushScene<TitleScreen>();
 	}
@@ -30,6 +34,12 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             SceneManager.LoadScene("main");
         }
+
+		if(Input.GetKeyDown(KeyCode.Space)){
+			Time.timeScale = 1;
+			mouseLook.enabled = true;
+			// TextManager.instance.texts
+		}
 	}
 
 	void InitializeServices()

@@ -34,6 +34,7 @@ using UnityEngine;
 //		soundPlayed = false;
 		myPJ = GetComponent<PerlinJitter>();
 		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		rb = GetComponent<Rigidbody> ();
 
 // 		ORIGINAL SETTINGS

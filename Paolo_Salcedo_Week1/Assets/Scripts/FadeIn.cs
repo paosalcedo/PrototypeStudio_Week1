@@ -13,7 +13,7 @@ public class FadeIn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(transparency);
+		// Debug.Log(transparency);
 		transparency += 0.2f * Time.deltaTime;
 		myImage.color = new Vector4(0, 0, 0, transparency);
 	}
