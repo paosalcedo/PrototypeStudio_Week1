@@ -22,7 +22,7 @@ public class HumanSpawner : CloudMakerManager {
 
 	public override void SpawnRandom(){
 		GameObject person = Instantiate(Resources.Load("Prefabs/Person"), transform.position, transform.rotation) as GameObject;
-		person.transform.localScale = new Vector3(Random.Range(0.5f,0.7f), Random.Range(0.5f,0.7f), Random.Range(0.5f,0.7f));
+		person.transform.localScale = new Vector3(Random.Range(0.5f,0.7f), Random.Range(0.6f,0.7f), Random.Range(0.5f,0.7f));
 		// human.transform.eulerAngles = new Vector3(0, Random.Range(0,359), 0);
 		person.GetComponent<CloudMotor>().speed = -speed;
 		person.GetComponent<CloudMotor>().myCloudMaker = myNum;

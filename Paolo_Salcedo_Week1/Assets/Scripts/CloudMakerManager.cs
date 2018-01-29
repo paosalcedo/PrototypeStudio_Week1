@@ -31,7 +31,7 @@ public class CloudMakerManager : MonoBehaviour {
 		GameObject cloud = Instantiate(Resources.Load("Prefabs/Car0"+ (int)Random.Range(1,4)), transform.position, transform.rotation) as GameObject;
 		// cloud.transform.localScale = new Vector3(Random.Range (3,10), Random.Range(3,10), Random.Range(3,10));
 		// cloud.transform.eulerAngles = new Vector3(0, Random.Range(0,359), 0);
-		cloud.GetComponent<CloudMotor>().speed = -speed;
+		cloud.GetComponent<CloudMotor>().speed = speed;
 		cloud.GetComponent<CloudMotor>().myCloudMaker = myNum;
 	}
 

@@ -18,7 +18,7 @@ public class CloudMotor : MonoBehaviour {
 	}
 
 	public virtual void MoveCloud(){
-		transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+		transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
 	}
 
 	public virtual void CarStop(){

@@ -19,13 +19,20 @@ public class Passersby : CloudMotor {
     {
 		base.Update();
 		HeadRotate();
-     }
+    }
+
+	public override void MoveCloud(){
+		transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+	}
 
     private void HeadRotate()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= 5f)
+        if (Vector3.Distance(player.transform.position, transform.position) <= 3f)
         {
             head.LookAt(player.transform);
-        }
+			// Time.timeScale = 0;
+        } else {
+			head.localEulerAngles = Vector3.zero;
+		}
     }
 }

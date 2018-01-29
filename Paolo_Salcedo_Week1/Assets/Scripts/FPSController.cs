@@ -103,9 +103,6 @@ using UnityEngine;
 
 	}
 
-	// void OnCollisionEnter(Collision coll){
-	// 	transform.Translate(Vector3.up * 0.1f);
-	// }
 	void OnCollisionStay (Collision coll) {
 		if (coll.collider.tag == "Ground") {
 			grounded = true;
@@ -115,8 +112,7 @@ using UnityEngine;
 	void OnCollisionExit(Collision coll){
 		grounded = false;
 		if (coll.gameObject.tag == "ground") {
-//			initHeight = transform.position.y;
-		}
+ 		}
 	}
 		
 }

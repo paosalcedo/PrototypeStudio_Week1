@@ -33,11 +33,13 @@ public class MouseLook : MonoBehaviour {
 		smoothV.x = Mathf.Lerp (smoothV.x, mousePos.x, 1f / smoothing);
 		smoothV.y = Mathf.Lerp (smoothV.y, mousePos.y, 1f / smoothing);
 		mouseLook += smoothV + jitterVec2;
-		mouseLook.y = Mathf.Clamp (mouseLook.y, -90f, 90f);
 
+		// mouseLook.y = Mathf.Clamp (mouseLook.y, -90f, 90f);
+		float actualMouseY = -mouseLook.y * perlinJitter * yMultiplier;
+		actualMouseY = Mathf.Clamp (actualMouseY, -90f, 90f);
 
-
-		transform.localRotation = Quaternion.AngleAxis (-mouseLook.y * perlinJitter*yMultiplier, Vector3.right);
+		transform.localRotation = Quaternion.AngleAxis (actualMouseY, Vector3.right);
+		// transform.localRotation = Quaternion.AngleAxis (-mouseLook.y * perlinJitter*yMultiplier, Vector3.right);
 		character.transform.localRotation = Quaternion.AngleAxis (mouseLook.x * perlinJitter * xMultiplier, character.transform.up);
 	}
 }

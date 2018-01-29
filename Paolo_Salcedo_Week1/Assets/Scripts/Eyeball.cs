@@ -11,8 +11,10 @@ public class Eyeball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Vector3.Distance(player.transform.position, transform.position) <= 10f){
+		if(Vector3.Distance(player.transform.position, transform.position) <= 5f){
 			transform.LookAt(player.transform);
+		} else {
+			transform.localEulerAngles = Vector3.zero;
 		}
 	}
 }

@@ -16,7 +16,7 @@ public class TargetArea : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if(coll.gameObject.tag == "Player"){
-			Debug.Log("Hello sir what is your order");
+			TextManager.instance.RevealText(TextManager.instance.texts[1], 4f);
 		}
 	}
 }
