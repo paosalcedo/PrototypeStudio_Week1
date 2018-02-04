@@ -38,7 +38,13 @@ public class GameManager : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Space)){
 			Time.timeScale = 1;
 			mouseLook.enabled = true;
-			// TextManager.instance.texts
+			TextManager.instance.texts[0].enabled = false;
+			TextManager.instance.texts[2].enabled = false;
+			TextManager.instance.texts[8].enabled = false;
+	}
+
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit();
 		}
 	}
 

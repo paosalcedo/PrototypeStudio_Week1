@@ -26,7 +26,7 @@ public class TextManager : MonoBehaviour {
 
 	IEnumerator FadeTextDelayed(float delay, Text _text){
 		yield return new WaitForSeconds(delay);
-		_text.CrossFadeAlpha(0, 5f, false);
+		_text.CrossFadeAlpha(0, 3f, false);
  	}
 
 	public void FadeText(Text _text, float _fadeTime){
