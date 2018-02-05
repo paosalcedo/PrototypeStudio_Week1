@@ -26,7 +26,24 @@ public class Player : MonoBehaviour {
 		ProcessInput();
 
 		if(transform.position.y <= -20f){
-			transform.position = startPos;
+			if(transform.position != startPos){
+				TextManager_Week02.instance.texts[Random.Range(5, 11)].gameObject.SetActive(true);
+				// if(TextManager_Week02.instance.texts[5].ena)
+				for (int i = 5; i<12; ++i){
+					if(TextManager_Week02.instance.texts[i].gameObject.activeInHierarchy){
+						StartCoroutine(TextManager_Week02.instance.DisableText(3f, i));
+					}
+				}
+
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 6));
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 7));
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 8));
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 9));
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 10));
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 11));
+				// StartCoroutine(TextManager_Week02.instance.DisableText(3f, 5));
+			}
+ 			transform.position = startPos;
 			rb.angularVelocity = Vector3.zero;
 			transform.rotation = Quaternion.Euler(0,0,0);
 		}
@@ -45,54 +62,26 @@ public class Player : MonoBehaviour {
 
 	void ProcessInput(){
 		//Movement
-		// rb.velocity = InputActions.moveVector * moveSpeed;
-		// rb.AddForce(InputActions.moveVector * moveSpeed, ForceMode.Force);
-		rb.AddRelativeTorque(new Vector3(0, 0, InputActions.moveVector.x) * 50, ForceMode.Force);
-		rb.AddRelativeTorque(new Vector3(-InputActions.moveVector.z, 0, 0) * 50, ForceMode.Force);
-		// rb.AddRelativeTorque(new Vector3(0, InputActions.moveVector.y, 0) * 10000, ForceMode.Force);
-		float myRotation = 0;
-		myRotation += InputActions.moveVector.y;
-		transform.Rotate(new Vector3(0, myRotation, 0));
-
-		// if(Input.GetKey(KeyCode.A)){            
-		// 	rb.AddRelativeTorque(new Vector3(InputAction.moveVector.x, 0, 0) * 10000, ForceMode.Force);
-		// }
-
-		// if(Input.GetKey(KeyCode.D)){
-		// 	rb.AddRelativeTorque(new Vector3(-1, 0, 0) * 10000, ForceMode.Force);
-		// }
-
-		// if(Input.GetKey(KeyCode.W)){
-		// 	rb.AddRelativeTorque(new Vector3(0, 0, 1) * 10000, ForceMode.Force);
-		// }
-
-		// if(Input.GetKey(KeyCode.S)){
-		// 	rb.AddRelativeTorque(new Vector3(0, 0, -1) * 10000, ForceMode.Force);
-		// }
-
-		// if(Input.GetKey(KeyCode.Q)){
-		// 	rb.AddRelativeTorque(new Vector3(0, -1, 0) * 2500, ForceMode.Force);
-		// }
-
-		// if(Input.GetKey(KeyCode.E)){
-		// 	rb.AddRelativeTorque(new Vector3(0, 1, 0) * 2500, ForceMode.Force);
-		// }
-
-		if(Input.GetKey(KeyCode.Space)){
-			Time.timeScale = 1;
-			Destroy(GameObject.Find("Canvas"));
+		if(!GatorGoal.instance.playerIsInGoal){
+			rb.AddRelativeTorque(new Vector3(0, 0, InputActions.moveVector.x) * 50, ForceMode.Force);
+			rb.AddRelativeTorque(new Vector3(-InputActions.moveVector.z, 0, 0) * 50, ForceMode.Force);
+			float myRotation = 0;
+			myRotation += InputActions.moveVector.y;
+			transform.Rotate(new Vector3(0, myRotation, 0));
 		}
 
-
-
-		//Ship Rotation
-		// myRotation += InputActions.rotation;
-		// transform.rotation = Quaternion.Euler(0, myRotation, 0);
 
 		//Restart
 		if(InputActions.restart_game){
 			SceneManager.LoadScene("Week02");
 		}
+
+	}
+
+	public void StopMovement(){
+		Debug.Log("Stopping movement!");
+		// rb.angularVelocity = Vector3.zero;
+		// transform.rotation = Quaternion.Euler(0,0,0);
 	}
 
 }

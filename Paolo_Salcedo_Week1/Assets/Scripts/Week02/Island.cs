@@ -21,6 +21,7 @@ public class Island : MonoBehaviour {
 
 	void LerpToPosition(){
 		t += 0.00002f * Time.deltaTime;
-		transform.position = Vector3.Lerp(transform.position, gator.transform.position + gator.transform.forward * 20, t);
+		// t += 0.1f * Time.deltaTime;
+		transform.position = Vector3.Lerp(transform.position, gator.transform.position + (gator.transform.forward * 32.5f) -gator.transform.right, t);
 	}
 }
