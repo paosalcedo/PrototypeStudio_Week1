@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/main.unity
     guid: 03cc70d07b8e7f8428ae9f8fd0d241bf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Week02.unity
     guid: 6a95cff620721f54e9a64f6b373b708d
+  - enabled: 1
+    path: Assets/Scenes/Week03_Intro.unity
+    guid: 0fe45ec5afa35a64fa4b76a8941e372e
+  - enabled: 1
+    path: Assets/Scenes/Week03_v3.unity
+    guid: 5abcd62431c275a4fa41317cf861c2bf
