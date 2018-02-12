@@ -10,8 +10,8 @@ public class LetterSpawner : MonoBehaviour {
 	[SerializeField]float letterMoveSpeed;
 
 	Player_WK3 player;
-	public string[] letters = {"a", "b", "c", "d", "e", "f", "g", "g", "j",
-	"j", "k", "l", "m", "n", "o", "p", "q", "r", "t", "t", "u", "v", "w", "w", "a", "d"};
+	public string[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i",
+	"j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 	public int myStringIndex = 0;
 
 	public List<GameObject> lettersAlive = new List<GameObject>(); 
@@ -32,7 +32,6 @@ public class LetterSpawner : MonoBehaviour {
 			lettersAlive.Add(letter);
 			letter.GetComponent<Letter>().speed = letterMoveSpeed;
 			player.myTextMesh.text = letter.GetComponent<Letter>().myString;
-
 		}
 	}
 }

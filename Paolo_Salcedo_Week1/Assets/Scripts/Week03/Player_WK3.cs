@@ -10,8 +10,11 @@ public class Player_WK3 : MonoBehaviour {
 	private int playerId = 0;
  	[SerializeField]string letterPressed;
 	public TextMeshPro myTextMesh;
+	public Text failTextTitle;
 	public Text failTextA;
 	public Text failTextB;
+	public Text failTextC;
+	public Text failTextD;
 	float rotation = 0;
 	float rotInterval = 45;
 	LetterSpawner letterSpawner;	
@@ -203,7 +206,8 @@ public class Player_WK3 : MonoBehaviour {
 				StartCoroutine(CameraShake.Shake(this.transform, 0.05f));
 				audioManager_WK3.PlaySuccess();
 			} else if (Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) != Mathf.Round(transform.eulerAngles.z)){
-								
+				ShowFailureMessage(letterHit.myString);
+				Time.timeScale = 0;								
 				//  SceneManager.LoadScene("Week03_v3");
 				// Debug.LogError("Enemy was at " + Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) + " Player was at " + Mathf.Round(transform.eulerAngles.z));
  			}
@@ -223,7 +227,16 @@ public class Player_WK3 : MonoBehaviour {
 	}
 
 	void ShowFailureMessage(string _letter){
-
+		failTextA.gameObject.SetActive(true);
+		failTextA.text = _letter;
+		failTextB.gameObject.SetActive(true);
+		failTextB.text = _letter;
+		failTextTitle.gameObject.SetActive(true);
+		failTextC.gameObject.SetActive(true);
+		failTextD.gameObject.SetActive(true);
+		GameObject.Find("Game").SetActive(false);
+		GameObject letterAlive = FindObjectOfType<Letter>().gameObject;
+		letterAlive.SetActive(false);
 	}
 
 }

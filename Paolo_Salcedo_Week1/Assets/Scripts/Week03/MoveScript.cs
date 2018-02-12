@@ -17,7 +17,7 @@ public class MoveScript : MonoBehaviour {
 		startPos = transform.position;
 		if(direction.x != 0){
 			isMovingHorizontally = true;
-		} else{
+		} else {
 			isMovingHorizontally = false;
 		}
  	}

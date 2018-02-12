@@ -20,6 +20,7 @@ public class GameManager_WK3 : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space)){
 			SceneManager.LoadScene("Week03_v3");
+			Time.timeScale = 1;
 		}
 
 		if(Input.GetKeyDown(KeyCode.Escape)){
