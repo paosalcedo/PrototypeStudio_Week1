@@ -20,8 +20,8 @@ public class PerlinJitter : MonoBehaviour {
 	void Update () {
 		perlinJitter = Mathf.PerlinNoise(Time.time * timeScale,0);
 		if(GetComponent<Camera>() == null){
-			PositionNoise();
-			// RotationNoise();
+//			PositionNoise();
+			 RotationNoise();
 		} else {
 		}
 	}
