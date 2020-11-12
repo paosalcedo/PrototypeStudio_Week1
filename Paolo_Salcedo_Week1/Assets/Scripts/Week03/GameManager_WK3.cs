@@ -20,7 +20,7 @@ public class GameManager_WK3 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)){ //Restarts current game
+		if(Input.GetKeyDown(KeyCode.Space)){ //Restarts current game, but if in intro, starts the game.
 			SceneManager.LoadScene("Week03_v3");
 			Time.timeScale = 1;
 		}

@@ -6,7 +6,9 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Player_WK3 : MonoBehaviour {
-	Rewired.Player player;
+
+	//This is the Player class. The main letter that is supposed to come in contact with the others 
+	Rewired.Player player; 
 	private int playerId = 0;
  	[SerializeField]string letterPressed;
 	public TextMeshPro myTextMesh;
@@ -194,7 +196,7 @@ public class Player_WK3 : MonoBehaviour {
 		if(coll.gameObject.GetComponent<Letter>() != null){
 			
 			Letter letterHit = coll.gameObject.GetComponent<Letter>();
-  			if(letterHit.myString == "o" /* || letterHit.myString == "i" || letterHit.myString == "h" || letterHit.myString == "x" || letterHit.myString == "y" || letterHit.myString == "z" || letterHit.myString == "s" */){
+  			if(letterHit.MyString == "o" /* || letterHit.myString == "i" || letterHit.myString == "h" || letterHit.myString == "x" || letterHit.myString == "y" || letterHit.myString == "z" || letterHit.myString == "s" */){
 				DestroyIncomingLetter(letterHit);
 				scoreKeeper.score += 1;
 				StartCoroutine(CameraShake.Shake(this.transform, 0.05f));
@@ -206,7 +208,7 @@ public class Player_WK3 : MonoBehaviour {
 				StartCoroutine(CameraShake.Shake(this.transform, 0.05f));
 				audioManager_WK3.PlaySuccess();
 			} else if (Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) != Mathf.Round(transform.eulerAngles.z)){
-				ShowFailureMessage(letterHit.myString);
+				ShowFailureMessage(letterHit.MyString);
 				Time.timeScale = 0;								
 				//  SceneManager.LoadScene("Week03_v3");
 				// Debug.LogError("Enemy was at " + Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) + " Player was at " + Mathf.Round(transform.eulerAngles.z));

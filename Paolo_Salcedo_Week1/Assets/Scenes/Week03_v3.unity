@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.0368408, g: 0.28252715, b: 0.28252715, a: 1}
+  m_IndirectSpecularColor: {r: 1.0368408, g: 0.28252718, b: 0.28252718, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: a
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0e180e3deebec8b48ad275ee4e5e1d9c, type: 2}
-  m_sharedMaterial: {fileID: 21505903499532388, guid: 0e180e3deebec8b48ad275ee4e5e1d9c,
+  m_fontAsset: {fileID: 11400000, guid: e752d7a234a8caa41a5aa5895962de7b, type: 2}
+  m_sharedMaterial: {fileID: 21867462173169650, guid: e752d7a234a8caa41a5aa5895962de7b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -288,7 +288,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 21505903499532388, guid: 0e180e3deebec8b48ad275ee4e5e1d9c, type: 2}
+  - {fileID: 21867462173169650, guid: e752d7a234a8caa41a5aa5895962de7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -620,6 +620,13 @@ MonoBehaviour:
   - y
   - g
   myStringIndex: 0
+  words:
+  - Awesome
+  - Formidable
+  - Exalted
+  - Colorful
+  - Frantic
+  - Majestic
   lettersAlive: []
 --- !u!1 &286569821
 GameObject:
