@@ -279,7 +279,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.75
-  m_Text: new font learning
+  m_Text: type righter
 --- !u!222 &402932978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ Prefab:
     - target: {fileID: 224481017053946742, guid: 82a89aa6be59608419e8e4fde2da8263,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: -48.03363
       objectReference: {fileID: 0}
     - target: {fileID: 224481017053946742, guid: 82a89aa6be59608419e8e4fde2da8263,
         type: 2}
