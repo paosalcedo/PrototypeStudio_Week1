@@ -14,8 +14,8 @@ public class Letter : MonoBehaviour {
 	void Start () {
 		angleInterval = Random.Range(1, 9); //we randomize the angle of the Letter transform by randomizing angleInterval.
 		textMesh = GetComponent<TextMeshPro>();
-		transform.eulerAngles = new Vector3(0, 0, angleInterval * 45); //we then apply it to the transform here.
- 	}
+        //transform.eulerAngles = new Vector3(0, 0, angleInterval * 45); //we then apply it to the transform here.
+    }
 	
 	// Update is called once per frame
 	void Update () {

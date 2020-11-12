@@ -15,7 +15,6 @@ public class LetterSpawner : MonoBehaviour {
 	"j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 	private int letterIndex = 0;
 	private int wordIndex = 0; //out of whatever number of elements there are in the "words" list
-
 	public List<string> words = new List<string>() {
 		"Awesome","Formidable","Exalted","Colorful","Frantic","Majestic"
 	};
@@ -51,13 +50,17 @@ public class LetterSpawner : MonoBehaviour {
 			foreach (char ch in charArr) {
 				spawnedWord.Add(ch.ToString());
 			}
+			float x = 0;
+			float kerning = 2.75f;
 			for (int i = 0; i < spawnedWord.Count; i++) {
 				GameObject letter = (GameObject)Instantiate(Resources.Load("Prefabs/Week03/Letter"), Vector3.forward * 20, Quaternion.identity);
 				letter.GetComponent<Letter>().MyString = spawnedWord[i];
-	            lettersAlive.Add(letter);
-				//player.myTextMesh.text = letter.GetComponent<Letter>().myString;
-			}
-			//letter.GetComponent<Letter>().speed = letterMoveSpeed;
-		}
+				x += kerning;
+                letter.transform.position = new Vector3(x, letter.transform.position.y, letter.transform.position.z);
+                lettersAlive.Add(letter);
+                //player.myTextMesh.text = letter.GetComponent<Letter>().myString;
+                letter.GetComponent<Letter>().Speed = letterMoveSpeed;
+            }
+        }
 	}
 }
