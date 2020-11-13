@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class TextData : MonoBehaviour {
-	List<string> wStrings = new List<string>(){
+public static class TextData
+{
+	public static List<string> Words = new List<string>()
+	{ 
+		"Awesome",
+		"Formidable",
+		"Exalted",
+		"Colorful",
+		"Frantic",
+		"Majestic",   
 		"run",
 		"away",
 		"distance",
@@ -22,9 +30,6 @@ public class TextData : MonoBehaviour {
 		"getaway",
 		"drive",
 		"trip",
-	};
-
-	List<string> sStrings = new List<string>(){
 		"brandy",
 		"cigarettes",
 		"eyeliner",
@@ -33,7 +38,6 @@ public class TextData : MonoBehaviour {
 		"whispers",
 		"mixtapes",
 		"Holland",
-		"1945",
 		"Awake",
 		"basement",
 		"dimsum",
@@ -53,11 +57,8 @@ public class TextData : MonoBehaviour {
 		"hiding",
 		"storm",
 		"warm",
+		"emperador"
 	};
-
-	void Start(){
-
-	}
 	
 }
 

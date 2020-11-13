@@ -16,6 +16,7 @@ public class GameManager_WK3 : MonoBehaviour {
 		} else {
 			Destroy(this);
 		}
+
 	}
 	
 	// Update is called once per frame
