@@ -19,14 +19,14 @@ public class Player_WK3 : MonoBehaviour {
 	public Text failTextD;
 	float rotation = 0;
 	float rotInterval = 45;
-	LetterSpawner letterSpawner;	
+	WordSpawner letterSpawner;	
 	ScoreKeeper_WK3 scoreKeeper;
 
 	PlayerAudioManager_WK3 audioManager_WK3;
 	// Use this for initialization
 	void Start () {
 		player = ReInput.players.GetPlayer(playerId);
-		letterSpawner = FindObjectOfType<LetterSpawner>();
+		letterSpawner = FindObjectOfType<WordSpawner>();
 		myTextMesh = GetComponent<TextMeshPro>();
 		myTextMesh.text = "";
 		scoreKeeper = FindObjectOfType<ScoreKeeper_WK3>();
@@ -194,7 +194,6 @@ public class Player_WK3 : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if(coll.gameObject.GetComponent<Letter>() != null){
-			
 			Letter letterHit = coll.gameObject.GetComponent<Letter>();
   			if(letterHit.MyString == "o" /* || letterHit.myString == "i" || letterHit.myString == "h" || letterHit.myString == "x" || letterHit.myString == "y" || letterHit.myString == "z" || letterHit.myString == "s" */){
 				DestroyIncomingLetter(letterHit);
