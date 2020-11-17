@@ -5,7 +5,6 @@ using TMPro;
 
 public class Word : MonoBehaviour {
 
-	private List<Player_WK3> playerLetters = new List<Player_WK3>();
 	[SerializeField]private List<string> word = new List<string>(); //made of a list of single letters
 	// Use this for initialization
 	void Start () {

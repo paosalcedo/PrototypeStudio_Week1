@@ -33,62 +33,86 @@ public class WordSpawner : MonoBehaviour {
 	void Update ()
     {
         //ramps up the move speed of each spawned letter over time.
-        IncreaseLetterMoveSpeed();
-        SpawnWord();
+        //IncreaseLetterMoveSpeed();
+
+        if (Input.GetKeyDown(KeyCode.PageUp)) {
+            SpawnWord();
+        }
     }
 
-    private void SpawnWord()
+    public static void RemoveWord(List<Letter> spawnedLetters)
     {
-        if (lettersAlive.Count <= 0)
-        {       //needs to only spawn when there are no other letters in the Scene.
 
-            //NEW WORD SYSTEM
-
-            wordIndex = Random.Range(0, TextData.Words.Count);
-            List<string> spawnedWord = new List<string>();
-            //pass the selected word to "Word" class
-            //this is a terrible way but let's get it working first
-            GameObject.Find("WordPlayer").GetComponent<Word>().SetWord(TextData.Words[wordIndex]);
-            Debug.Log(TextData.Words[wordIndex]);
-            //use foreach to go through each letter in the selected word and convert to charArr.
-           
-
-            char[] charArr = TextData.Words[wordIndex].ToCharArray();
-            
-            foreach (char ch in charArr)
-            {
-                spawnedWord.Add(ch.ToString());
-            }
-            float x = -10; //starting position of the first letter
-            float kerning = 2.75f; //spacing between each letter
-            for (int i = 0; i < TextData.Words[wordIndex].Length; ++i)
-            {
-                //first letter should spawn at x = -10
-                // Vector3.forward * 20
-                GameObject g = Instantiate(Resources.Load("Prefabs/Week03/Letter"), Vector3.forward * 20, Quaternion.identity) as GameObject;
-                Letter letter = g.GetComponent<Letter>();
-                letter.GetComponent<Letter>().MyString = spawnedWord[i]; //take a specific letter at index i from the spawnedWord list of words
-                x += kerning;
-                letter.transform.position = new Vector3(x, letter.transform.position.y, letter.transform.position.z);
-
-                //only add active letters until there's a max of 3
-                if (lettersAlive.Count <= 3)
-                {
-                    //add some randomization so it's not every letter?
-                    int r = Random.Range(0, 100);
-                    int angle = Random.Range(0, 359);
-                    if (r >= 66)
-                    {
-                        letter.transform.Rotate(Vector3.forward * angle, Space.Self);
-                        lettersAlive.Add(letter);
-                        currentWord.SpawnPlayableLetters(letter.MyString, letter.transform.position, letter.transform.rotation);
-                    }
-                }
-
-                //player.myTextMesh.text = letter.GetComponent<Letter>().myString;
-                letter.GetComponent<Letter>().Speed = letterMoveSpeed;
-            }
+        foreach (var letter in spawnedLetters)
+        {
+            letter.gameObject.SetActive(false);
+            Destroy(letter.gameObject);
         }
+    }
+
+    public void SpawnWord()
+    {
+        if (FindObjectsOfType<Letter>().Length >= 0)
+        { //if there are letters in the game
+            lettersAlive.Clear();
+            List<Letter> spawnedLetters = new List<Letter>();
+            spawnedLetters.AddRange(FindObjectsOfType<Letter>()); //then spawn letters and add them to the spawnedLetters list SO WE CAN DESTROY THEM
+            RemoveWord(spawnedLetters);
+        }
+        //needs to only spawn when there are no other letters in the Scene.
+
+        //NEW WORD SYSTEM
+
+        wordIndex = Random.Range(0, TextData.Words.Count);
+        List<string> spawnedWord = new List<string>();
+
+        //pass the selected word to "Word" class
+        //this is a terrible way but let's get it working first
+
+        //GameObject.Find("WordPlayer").GetComponent<Word>().SetWord(TextData.Words[wordIndex]);
+        //Debug.Log(TextData.Words[wordIndex]);
+
+        //use foreach to go through each letter in the selected word and convert to charArr.
+
+
+        char[] charArr = TextData.Words[wordIndex].ToCharArray();
+
+        foreach (char ch in charArr)
+        {
+            spawnedWord.Add(ch.ToString());
+        }
+        float x = -10; //starting position of the first letter
+        float kerning = 2.75f; //spacing between each letter
+        for (int i = 0; i < TextData.Words[wordIndex].Length; ++i)
+        {
+            //first letter should spawn at x = -10
+            // Vector3.forward * 20
+            GameObject g = Instantiate(Resources.Load("Prefabs/Week03/Letter"), Vector3.forward * 20, Quaternion.identity) as GameObject;
+            Letter letter = g.GetComponent<Letter>();
+            letter.GetComponent<Letter>().MyString = spawnedWord[i]; //take a specific letter at index i from the spawnedWord list of words
+            x += kerning;
+            letter.transform.position = new Vector3(x, letter.transform.position.y, letter.transform.position.z);
+
+            //only add active letters until there's a max of 3
+            if (lettersAlive.Count <= 3)
+            {
+                int r = Random.Range(0, 100);   //add some randomization so it's not every letter?
+                int angle = Random.Range(1, 8);
+                int angleInterval = 45;
+
+                if (r >= 66 && letter.MyString != "o" && letter.MyString != "n" && letter.MyString != "i" && letter.MyString != "h")
+                {
+                    letter.transform.Rotate(Vector3.forward * (angle * angleInterval), Space.Self); //we rotate the letter to a random rotation
+                    lettersAlive.Add(letter);
+                    letter.IsControllable = true; //we only want to control/rotate the letters that are not upright
+                    //currentWord.SpawnPlayableLetters(letter.MyString, letter.transform.position, letter.transform.rotation);
+                }
+            }
+
+            //player.myTextMesh.text = letter.GetComponent<Letter>().myString;
+            letter.GetComponent<Letter>().Speed = letterMoveSpeed;
+        }
+  
         spawned++;
     }
     private void IncreaseLetterMoveSpeed()

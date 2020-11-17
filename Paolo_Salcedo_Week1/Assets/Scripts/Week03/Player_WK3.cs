@@ -201,12 +201,12 @@ public class Player_WK3 : MonoBehaviour {
 				StartCoroutine(CameraShake.Shake(this.transform, 0.05f));
 				audioManager_WK3.PlaySuccess();
 			} 
-			else if(Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) == Mathf.Round(transform.eulerAngles.z)){
+			else if(Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) == Mathf.Round(transform.eulerAngles.z)){ //this line checks if the angle of the incoming letter matches the current letter
 				DestroyIncomingLetter(letterHit);
  				scoreKeeper.score += 1;
 				StartCoroutine(CameraShake.Shake(this.transform, 0.05f));
 				audioManager_WK3.PlaySuccess();
-			} else if (Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) != Mathf.Round(transform.eulerAngles.z)){
+			} else if (Mathf.Round(letterHit.gameObject.transform.eulerAngles.z) != Mathf.Round(transform.eulerAngles.z)){ //if the angles don't match
 				ShowFailureMessage(letterHit.MyString);
 				Time.timeScale = 0;								
 				//  SceneManager.LoadScene("Week03_v3");
