@@ -247,4 +247,5 @@ public class Letter : MonoBehaviour {
 		//	//audioManager_WK3.PlayRotate();
 		//}
 	}
+
 }
