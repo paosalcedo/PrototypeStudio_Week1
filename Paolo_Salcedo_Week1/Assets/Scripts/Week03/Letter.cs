@@ -14,7 +14,10 @@ public class Letter : MonoBehaviour {
 	private int playerId = 0;
 	[SerializeField] string letterPressed;
 	PlayerAudioManager_WK3 audioManager_WK3;
-	float rotation = 0;
+	LetterManager letterManager;
+	public float Rotation { get; private set; }
+	
+
 	float rotInterval = 45;
 	public bool IsControllable = false;
 
@@ -24,9 +27,12 @@ public class Letter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = ReInput.players.GetPlayer(playerId);
+		letterManager = FindObjectOfType<LetterManager>();
+		Debug.Assert(letterManager != null, "Letter.cs : Can't find LetterManager!");
 		angleInterval = Random.Range(1, 9); //we randomize the angle of the Letter transform by randomizing angleInterval.
 		textMesh = GetComponent<TextMeshPro>();
-
+		Rotation = transform.eulerAngles.z;
+		Debug.Log("Hello world! " + "I am " + MyString + ". My rotation is " + Rotation);
         //transform.eulerAngles = new Vector3(0, 0, angleInterval * 45); //we then apply it to the transform here.
     }
 
@@ -36,10 +42,14 @@ public class Letter : MonoBehaviour {
 			GetInput();
 			ProcessInput();
 		}
-		//transform.Translate(Vector3.back * Speed * Time.deltaTime); //movement
-		textMesh.text = MyString;
+		Move();
+        textMesh.text = MyString; //always setting the text property of the mesh to the assigned letter.
 		//transform.eulerAngles = new Vector3(0, 0, rotation);
 		//Debug.Log("Enemy " + myString + " is "  + angleInterval * 45);
+	}
+
+	private void Move() {
+		transform.Translate(Vector3.back * Speed * Time.deltaTime); //movement
 	}
 
 	private void ProcessInput()
@@ -226,9 +236,10 @@ public class Letter : MonoBehaviour {
 	private void RotateLetter()
 	{
 		if (letterPressed == textMesh.text) { 
-			rotation = transform.eulerAngles.z;
-			rotation += rotInterval;
-			transform.eulerAngles = new Vector3(0, 0, rotation);
+			Rotation = transform.eulerAngles.z;
+			Rotation += rotInterval;
+			transform.eulerAngles = new Vector3(0, 0, Rotation);
+			letterManager.CheckIfAllLettersAreUpright();
 		}
 		//if (letterPressed == textMesh.text)
 		//{

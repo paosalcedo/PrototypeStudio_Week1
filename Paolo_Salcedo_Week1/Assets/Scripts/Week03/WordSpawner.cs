@@ -12,6 +12,7 @@ public class WordSpawner : MonoBehaviour {
     [SerializeField] int lettersAliveCount;
 
     Word currentWord;
+    LetterManager letterManager;
 	public string[] Letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i",
 	"j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 	private int letterIndex = 0;
@@ -25,6 +26,8 @@ public class WordSpawner : MonoBehaviour {
 
 	public List<Letter> lettersAlive = new List<Letter>(); 
 	void Start () {
+        letterManager = FindObjectOfType<LetterManager>();
+        Debug.Assert(letterManager != null, "Can't find LetterManager class");
         currentWord = FindObjectOfType<Word>();
         Debug.Assert(currentWord != null, "Can't find Word class");
 	}
@@ -87,7 +90,9 @@ public class WordSpawner : MonoBehaviour {
         {
             //first letter should spawn at x = -10
             // Vector3.forward * 20
-            GameObject g = Instantiate(Resources.Load("Prefabs/Week03/Letter"), Vector3.forward * 20, Quaternion.identity) as GameObject;
+            float spawnDistance = 100;
+
+            GameObject g = Instantiate(Resources.Load("Prefabs/Week03/Letter"), Vector3.forward * spawnDistance, Quaternion.identity) as GameObject;
             Letter letter = g.GetComponent<Letter>();
             letter.GetComponent<Letter>().MyString = spawnedWord[i]; //take a specific letter at index i from the spawnedWord list of words
             x += kerning;
@@ -100,10 +105,11 @@ public class WordSpawner : MonoBehaviour {
                 int angle = Random.Range(1, 8);
                 int angleInterval = 45;
 
-                if (r >= 66 && letter.MyString != "o" && letter.MyString != "n" && letter.MyString != "i" && letter.MyString != "h")
+                if (r >= 67 && !lettersAlive.Contains(letter))
                 {
                     letter.transform.Rotate(Vector3.forward * (angle * angleInterval), Space.Self); //we rotate the letter to a random rotation
                     lettersAlive.Add(letter);
+                    letterManager.Letters.Add(letter);
                     letter.IsControllable = true; //we only want to control/rotate the letters that are not upright
                     //currentWord.SpawnPlayableLetters(letter.MyString, letter.transform.position, letter.transform.rotation);
                 }
