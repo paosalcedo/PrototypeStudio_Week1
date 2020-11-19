@@ -36,24 +36,34 @@ public class LetterManager : MonoBehaviour {
                 n++;    
             }
         }
-        if (n == Letters.Count) {
-            AscendLetters();
+        //if all letters are upright, then AscendLetters()
+        if (n == Letters.Count) { 
+            CorrectAnimation();
         }
 	}
 
-    private void AscendLetters() {
+    private void CorrectAnimation() {
         foreach (var letter in FindObjectsOfType<Letter>()) { 
-            // Grab a free Sequence to use
             Sequence mySequence = DOTween.Sequence();
-            // Add a movement tween at the beginning
             mySequence.Append(letter.transform.DOShakePosition(0.5f));
-            // Add a rotation tween as soon as the previous one is finished
             mySequence.Append(letter.transform.DOMoveY(100, 5f));
-            // Delay the whole Sequence by 1 second
-            //mySequence.PrependInterval(1);
-            // Insert a scale tween for the whole duration of the Sequence
-            //mySequence.Insert(0, transform.DOScale(new Vector3(3, 3, 3), mySequence.Duration()));
-            //letter.transform.DOMove
+            mySequence.OnComplete(DestroyExistingLetters);
+        }
+    }
+
+    private void DestroyExistingLetters() {
+        foreach (var letter in FindObjectsOfType<Letter>()) {
+            letter.gameObject.SetActive(false);
+        }
+    }
+
+    private void OutOfTimeAnimation() {
+        foreach (var letter in FindObjectsOfType<Letter>())
+        {
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(letter.transform.DOShakePosition(0.5f));
+            mySequence.Append(letter.transform.DOMoveY(100, 5f));
+            mySequence.OnComplete(DestroyExistingLetters);
         }
     }
 }
