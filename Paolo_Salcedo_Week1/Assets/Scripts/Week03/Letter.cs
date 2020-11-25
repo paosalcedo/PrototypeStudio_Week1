@@ -4,10 +4,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Rewired;
+using DG.Tweening;
 
 public class Letter : MonoBehaviour {
 
-	private TextMeshPro textMesh;
+    public TextMeshPro TextMesh
+    {
+        get
+        {
+            return textMesh;
+        }
+    }
+    private TextMeshPro textMesh;
 	public string MyString; //public string--probably set from somewhere
 	public float Speed;
 	Rewired.Player player;
@@ -15,6 +23,7 @@ public class Letter : MonoBehaviour {
 	[SerializeField] string letterPressed;
 	PlayerAudioManager_WK3 audioManager_WK3;
 	LetterManager letterManager;
+
 	public float Rotation { get; private set; }
 	
 
@@ -32,23 +41,24 @@ public class Letter : MonoBehaviour {
 		angleInterval = Random.Range(1, 9); //we randomize the angle of the Letter transform by randomizing angleInterval.
 		textMesh = GetComponent<TextMeshPro>();
 		Rotation = transform.eulerAngles.z;
-		Debug.Log("Hello world! " + "I am " + MyString + ". My rotation is " + Rotation);
+		//Debug.Log("Hello world! " + "I am " + MyString + ". My rotation is " + Rotation);
         //transform.eulerAngles = new Vector3(0, 0, angleInterval * 45); //we then apply it to the transform here.
     }
 
 	// Update is called once per frame
 	void Update () {
-		if (IsControllable) { 
-			GetInput();
-			ProcessInput();
-		}
-		Move();
-        textMesh.text = MyString; //always setting the text property of the mesh to the assigned letter.
+		//if (IsControllable) { 
+		//	GetInput();
+		//	ProcessInput();
+		//}
+		GetInput();
+		ProcessInput();
+		textMesh.text = MyString; //always setting the text property of the mesh to the assigned letter.
 		//transform.eulerAngles = new Vector3(0, 0, rotation);
 		//Debug.Log("Enemy " + myString + " is "  + angleInterval * 45);
 	}
 
-	private void Move() {
+	public void Move() {
 		transform.Translate(Vector3.back * Speed * Time.deltaTime); //movement
 	}
 
@@ -235,16 +245,53 @@ public class Letter : MonoBehaviour {
 
 	private void RotateLetter()
 	{
-		if (letterPressed == textMesh.text) { 
-			Rotation = transform.eulerAngles.z;
-			Rotation += rotInterval;
-			transform.eulerAngles = new Vector3(0, 0, Rotation);
-			letterManager.CheckIfAllLettersAreUpright();
+		if (letterPressed == textMesh.text)
+		{
+			if (IsControllable) { 
+				Rotation = transform.eulerAngles.z;
+				Rotation += rotInterval;
+				transform.eulerAngles = new Vector3(0, 0, Rotation);
+				letterManager.CheckIfAllLettersAreUpright();
+			}
+            else
+            {
+				IncorrectlyTypedLetterAnimation(this);
+            }
 		}
+
 		//if (letterPressed == textMesh.text)
 		//{
 		//	rotation += rotInterval;
 		//	//audioManager_WK3.PlayRotate();
+		//}
+	}
+
+	public bool IsIncorrectlyTypedLetterAnimationTweening;
+
+	public void SetIncorrectlyTypedLetterAnimationTweenStatus()
+	{
+		IsIncorrectlyTypedLetterAnimationTweening = !IsIncorrectlyTypedLetterAnimationTweening;
+	}
+
+	public void IncorrectlyTypedLetterAnimation(Letter letter)
+	{
+		if (!IsIncorrectlyTypedLetterAnimationTweening)
+		{
+			Sequence testSequence = DOTween.Sequence();
+			testSequence.PrependCallback(SetIncorrectlyTypedLetterAnimationTweenStatus);
+			testSequence.Append(letter.transform.DOPunchScale(new Vector3(1.05f, 1.05f, 1.05f), 0.3f));
+			testSequence.Join(letter.TextMesh.DOColor(Color.white, 0.25f));
+			testSequence.Append(letter.TextMesh.DOColor(Color.black, 0.15f));
+			testSequence.AppendCallback(SetIncorrectlyTypedLetterAnimationTweenStatus);
+		}
+		//if (!incorrectSequence.IsComplete())
+		//{
+		//    //letter.transform.localScale = Vector3.one;
+		//    //incorrectSequence.Append(letter.transform.DOPunchScale(new Vector3(1.1f, 1.1f, 1.1f), 0.75f));
+		//}
+		//else
+		//{
+		//    Debug.Log("Tween still active, can't play yet!");
 		//}
 	}
 

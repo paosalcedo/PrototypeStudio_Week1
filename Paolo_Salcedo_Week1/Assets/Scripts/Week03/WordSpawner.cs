@@ -8,8 +8,9 @@ public class WordSpawner : MonoBehaviour {
 	// Use this for initialization	
 	[SerializeField]float timer;
 	[SerializeField]float spawnTime;
-	float letterMoveSpeed = 10;
-    [SerializeField] int lettersAliveCount;
+	[SerializeField]float letterMoveSpeed = 10;
+    [SerializeField]private int lettersAliveCount;
+    [SerializeField]private int maxRotatedLetters = 3;
 
     Word currentWord;
     LetterManager letterManager;
@@ -24,7 +25,7 @@ public class WordSpawner : MonoBehaviour {
 
     private int spawned = 0;
 
-	public List<Letter> lettersAlive = new List<Letter>(); 
+	public List<Letter> RotatedLetters = new List<Letter>(); 
 	void Start () {
         letterManager = FindObjectOfType<LetterManager>();
         Debug.Assert(letterManager != null, "Can't find LetterManager class");
@@ -57,7 +58,7 @@ public class WordSpawner : MonoBehaviour {
     {
         if (FindObjectsOfType<Letter>().Length >= 0)
         { //if there are letters in the game
-            lettersAlive.Clear();
+            RotatedLetters.Clear();
             List<Letter> spawnedLetters = new List<Letter>();
             spawnedLetters.AddRange(FindObjectsOfType<Letter>()); //then spawn letters and add them to the spawnedLetters list SO WE CAN DESTROY THEM
             RemoveWord(spawnedLetters);
@@ -65,7 +66,7 @@ public class WordSpawner : MonoBehaviour {
         //needs to only spawn when there are no other letters in the Scene.
 
         //NEW WORD SYSTEM
-
+        letterManager.IsWordAlive = true; // tell LetterManager that a word is alive, to allow for Move() function in Letter.cs
         wordIndex = Random.Range(0, TextData.Words.Count);
         List<string> spawnedWord = new List<string>();
 
@@ -99,17 +100,22 @@ public class WordSpawner : MonoBehaviour {
             letter.transform.position = new Vector3(x, letter.transform.position.y, letter.transform.position.z);
 
             //only add active letters until there's a max of 3
-            if (lettersAlive.Count <= 3)
+            letterManager.AllLetters.Add(letter);
+            if (RotatedLetters.Count <= maxRotatedLetters)
             {
-                int r = Random.Range(0, 100);   //add some randomization so it's not every letter?
+                //int r = Random.Range(0, 100);   //add some randomization so it's not every letter?
                 int angle = Random.Range(1, 8);
                 int angleInterval = 45;
 
-                if (r >= 67 && !lettersAlive.Contains(letter))
+                if (
+
+                    //r >= 67 && 
+
+                    !RotatedLetters.Contains(letter))
                 {
                     letter.transform.Rotate(Vector3.forward * (angle * angleInterval), Space.Self); //we rotate the letter to a random rotation
-                    lettersAlive.Add(letter);
-                    letterManager.Letters.Add(letter);
+                    RotatedLetters.Add(letter);
+                    letterManager.RotatedLetters.Add(letter);
                     letter.IsControllable = true; //we only want to control/rotate the letters that are not upright
                     //currentWord.SpawnPlayableLetters(letter.MyString, letter.transform.position, letter.transform.rotation);
                 }

@@ -224,7 +224,7 @@ public class Player_WK3 : MonoBehaviour {
 
 	void DestroyIncomingLetter(Letter _letter){
 		Destroy (_letter.gameObject);
-		letterSpawner.lettersAlive.Clear();
+		letterSpawner.RotatedLetters.Clear();
 	}
 
 	void ShowFailureMessage(string _letter){
